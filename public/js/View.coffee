@@ -1,4 +1,5 @@
 Canvas = require './Canvas'
+STATES = require './STATES'
 
 class View
 	constructor: (@game) ->
@@ -25,10 +26,14 @@ class View
 		@game.mousemove(e.x, e.y)
 	render: () =>
 		@c.clear()
-		p = @game.p
-		if p
-			@c.drawCircle p.x, p.y, 10
-			@c.drawCircle p.target.x, p.target.y, 5, 'rgba(0,0,0,0.5)'
-			@c.drawLine p.x, p.y, p.target.x, p.target.y, 2, 'rgba(0,0,0,0.1)'
+		if @game.state is STATES.PLAY
+			# player
+			@c.drawCircle @game.p.x, @game.p.y, @game.p.size
+			# target
+			@c.drawCircle @game.p.target.x, @game.p.target.y, 5, 'rgba(0,0,0,0.5)'
+			@c.drawLine @game.p.x, @game.p.y, @game.p.target.x, @game.p.target.y, 2, 'rgba(0,0,0,0.1)'
+			# enemies
+			@game.enemies.forEach (e) =>
+				@c.drawCircle e.x, e.y, e.size, '#0F0'
 
 module.exports = View
