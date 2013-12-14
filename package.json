@@ -10,7 +10,7 @@
 		"coffeeify": "~0.5.2"
 	},
 	"scripts": {
-		"start": "beefy /js/main.coffee:bundle.js --cwd public --live 8080 -- -d -t coffeeify --extension=\".coffee\"",
+		"start": "beefy /js/main.coffee:bundle.js --cwd public 8080 -- -d -t coffeeify --extension=\".coffee\"",
 		"compass": "compass compile public",
 		"cwatch": "compass watch public"
 	}
