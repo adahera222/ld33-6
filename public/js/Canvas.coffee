@@ -3,17 +3,12 @@ class Canvas
 		@elt = document.createElement('canvas')
 		document.getElementsByTagName('body')[0].appendChild(@elt)
 		@ctx = @elt.getContext('2d')
-		window.addEventListener('resize', @resize)
-		@resize()
-	resize: =>
-		attrs = width: window.innerWidth, height: window.innerHeight
+	resize: (width, height) =>
+		attrs = width: width, height: height
 		for attr, val of attrs
 			@elt.setAttribute(attr, val + 'px')
-			@[attr] = val
-		@render()
-	render: =>
-		@drawCircle(100, 100, 100)
-		@drawLine(200, 200, 300, 300)
+	clear: =>
+		@ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
 	drawLine: (x1, y1, x2, y2, color = '#F00', width = 10) =>
 		@ctx.beginPath()
 		@ctx.moveTo(x1, y1)
