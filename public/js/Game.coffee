@@ -3,6 +3,7 @@ Player = require './Player'
 Enemy = require './Enemy'
 STATES = require './STATES'
 _ = require 'underscore'
+Sound = require './Sound'
 
 class Game
 	state: STATES.LOADING
@@ -15,6 +16,7 @@ class Game
 	constructor: ->
 		@state = STATES.LOADING
 		@v = new View(@)
+		@sound = new Sound()
 		window.addEventListener 'load', @loaded
 	loaded: =>
 		@state = STATES.MENU
@@ -52,6 +54,7 @@ class Game
 					if (@collisionCheck otherE, e) # hit other enemy; combine
 						@enemies = _.without @enemies, otherE
 						e.targetSize = Math.sqrt(Math.pow(e.size, 2) + Math.pow(otherE.size, 2))
+						@sound.blip()
 			@v.render()
 		requestAnimationFrame @tick
 	collisionCheck: (a, b) =>
