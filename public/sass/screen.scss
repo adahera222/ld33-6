@@ -4,9 +4,87 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass/reset";
+@import "compass/css3/user-interface";
+@import "compass/css3/transition";
 
-canvas {
-	background: #CCC;
-	width: 100%;
-	height: 100%;
+@mixin fullscreen {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+body {
+	cursor: none;
+	font-family: 'Alegreya Sans', sans-serif;
+	#loading {
+		font-family: sans-serif;
+		font-weight: 100;
+		font-size: 2em;
+		line-height: 8em;
+		text-align: center;
+		@include fullscreen;
+		background: white;
+		z-index: 101;
+		opacity: 1;
+		@include transition(all, 1s);
+		&.fade-out {
+			opacity: 0;
+			pointer-events: none;
+		}
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	canvas {
+		background: white;
+		z-index: 0;
+		@include fullscreen;
+	}
+
+	#menu {
+		cursor: default;
+		z-index: 100;
+		background: hsla(0,100,50,1);
+		color: white;
+		@include fullscreen;
+		h1 {
+			text-align: center;
+			font-size: 3em;
+			font-weight: 100;
+			margin: 1em 0;
+			cursor: default;
+			@include user-select(none);
+			b {
+				font-weight: 900;
+			}
+		}
+		button {
+			font-family: 'Alegreya Sans', sans-serif;
+			font-weight: 100;
+			color: white;
+			outline: none;
+			border: none;
+			background: none;
+			$borderHeight: 0.075em;
+			border: $borderHeight solid white;
+			display: block;
+			width: 5em;
+			$height: 2em + (2 * $borderHeight);
+			border-radius: $height / 4;
+			height: $height;
+			font-size: 2em;
+			margin: 0 auto;
+			cursor: pointer;
+			&:hover {
+				background: hsla(0,0,100,0.2);
+			}
+			&:active {
+				background: hsla(0,0,100,0.5);
+			}
+		}
+	}
 }

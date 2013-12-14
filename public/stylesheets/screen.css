@@ -67,9 +67,99 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 8, ../sass/screen.scss */
-canvas {
-  background: #CCC;
-  width: 100%;
-  height: 100%;
+/* line 18, ../sass/screen.scss */
+body {
+  cursor: none;
+  font-family: "Alegreya Sans", sans-serif;
+}
+/* line 21, ../sass/screen.scss */
+body #loading {
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 2em;
+  line-height: 8em;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: white;
+  z-index: 101;
+  opacity: 1;
+  -webkit-transition: all, 1s;
+  -moz-transition: all, 1s;
+  -o-transition: all, 1s;
+  transition: all, 1s;
+}
+/* line 32, ../sass/screen.scss */
+body #loading.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+/* line 38, ../sass/screen.scss */
+body .hidden {
+  display: none;
+}
+/* line 42, ../sass/screen.scss */
+body canvas {
+  background: white;
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+/* line 48, ../sass/screen.scss */
+body #menu {
+  cursor: default;
+  z-index: 100;
+  background: red;
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+/* line 54, ../sass/screen.scss */
+body #menu h1 {
+  text-align: center;
+  font-size: 3em;
+  font-weight: 100;
+  margin: 1em 0;
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+/* line 61, ../sass/screen.scss */
+body #menu h1 b {
+  font-weight: 900;
+}
+/* line 65, ../sass/screen.scss */
+body #menu button {
+  font-family: "Alegreya Sans", sans-serif;
+  font-weight: 100;
+  color: white;
+  outline: none;
+  border: none;
+  background: none;
+  border: 0.075em solid white;
+  display: block;
+  width: 5em;
+  border-radius: 0.5375em;
+  height: 2.15em;
+  font-size: 2em;
+  margin: 0 auto;
+  cursor: pointer;
+}
+/* line 82, ../sass/screen.scss */
+body #menu button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+/* line 85, ../sass/screen.scss */
+body #menu button:active {
+  background: rgba(255, 255, 255, 0.5);
 }

@@ -9,7 +9,7 @@ class Canvas
 			@elt.setAttribute(attr, val + 'px')
 	clear: =>
 		@ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
-	drawLine: (x1, y1, x2, y2, color = '#F00', width = 10) =>
+	drawLine: (x1, y1, x2, y2, width = 10, color = '#F00') =>
 		@ctx.beginPath()
 		@ctx.moveTo(x1, y1)
 		@ctx.lineTo(x2, y2)
