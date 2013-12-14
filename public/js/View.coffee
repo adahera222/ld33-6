@@ -20,6 +20,7 @@ class View
 	resize: =>
 		@width = window.innerWidth
 		@height = window.innerHeight
+		@game.resize(@width, @height)
 		@c.resize(@width, @height)
 		@render()
 	mousemove: (e) =>

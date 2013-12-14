@@ -7,7 +7,8 @@
 	"repository": "",
 	"dependencies": {
 		"coffee-script": "~1.6.3",
-		"coffeeify": "~0.5.2"
+		"coffeeify": "~0.5.2",
+		"underscore": "*"
 	},
 	"scripts": {
 		"start": "beefy /js/main.coffee:bundle.js --cwd public 8080 -- -d -t coffeeify --extension=\".coffee\"",
