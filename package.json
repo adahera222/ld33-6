@@ -1,0 +1,17 @@
+{
+	"name": "ld28zzzev",
+	"version": "0.0.0",
+	"author": {
+		"name": "Zev Youra"
+	},
+	"repository": "",
+	"dependencies": {
+		"coffee-script": "~1.6.3",
+		"coffeeify": "~0.5.2"
+	},
+	"scripts": {
+		"start": "beefy /js/main.coffee:bundle.js --cwd public --live 8080 -- -d -t coffeeify --extension=\".coffee\"",
+		"compass": "compass compile public",
+		"cwatch": "compass watch public"
+	}
+}
