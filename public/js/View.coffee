@@ -2,6 +2,7 @@ Canvas = require './Canvas'
 STATES = require './STATES'
 
 class View
+	targetTouch: null
 	constructor: (@game) ->
 		@c = new Canvas()
 		@ui = document.getElementById 'ui'
@@ -18,6 +19,9 @@ class View
 		window.addEventListener('resize', @resize)
 		window.addEventListener('mousemove', @mousemove)
 		window.addEventListener('keydown', @keydown)
+		window.addEventListener('touchstart', @touchstart)
+		window.addEventListener('touchmove', @touchmove)
+		window.addEventListener('touchend', @touchend)
 		@resize()
 	passthruBlur: (element, cb) =>
 		return (e) =>
@@ -56,6 +60,30 @@ class View
 		@render()
 	mousemove: (e) =>
 		@game.mousemove(e.x, e.y)
+	touchstart: (e) =>
+		if @game.state is STATES.PLAY
+			e.preventDefault()
+			if @targetTouch is null
+				tt = e.changedTouches[0]
+				@targetTouch = tt.identifier
+				@game.mousemove(tt.pageX, tt.pageY)
+	touchmove: (e) =>
+		if @game.state is STATES.PLAY
+			i = 0
+			while i < e.changedTouches.length
+				ct = e.changedTouches[i]
+				i++
+				if @targetTouch is ct.identifier
+					@game.mousemove(ct.pageX, ct.pageY)
+			e.preventDefault()
+	touchend: (e) =>
+		if @game.state is STATES.PLAY
+			i = 0
+			while i < e.changedTouches.length
+				ct = e.changedTouches[i]
+				i++
+				if @targetTouch is ct.identifier
+					@targetTouch = null
 	keydown: (e) =>
 		if e.keyCode is 32 # space bar
 			@game.detonatePressed()
@@ -80,9 +108,11 @@ class View
 			@game.enemies.forEach (e) =>
 				if e.detonated
 					ratio = e.detonated / e.detonationTime
-					detStroke = 'rgba(0,0,0,' + (1 - ratio) + ')'
-					detFill = 'rgba(0,0,0,' + ((1 - ratio) / 4) + ')'
-					@c.drawCircle e.x, e.y, e.detonationSize(), detFill, detStroke
+					if ratio < 1
+						ratio = 1 - ratio
+						detStroke = 'rgba(0,0,0,' + (ratio / 2) + ')'
+						detFill = 'rgba(0,0,0,' + (ratio / 4) + ')'
+						@c.drawCircle e.x, e.y, e.detonationSize(), detFill, detStroke
 				else
 					@c.drawCircle e.x, e.y, e.size, '#F00'
 

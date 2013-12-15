@@ -175,12 +175,17 @@ body .menu h2 a:hover {
   text-decoration: underline;
 }
 /* line 90, ../sass/screen.scss */
-body .menu h3 {
+body .menu #help {
   font-size: 1.25em;
   width: 30em;
   margin: 0 auto 2em;
+  font-weight: 100;
 }
 /* line 95, ../sass/screen.scss */
+body .menu #help b {
+  font-weight: 700;
+}
+/* line 99, ../sass/screen.scss */
 body .menu button {
   font-family: "Alegreya Sans", sans-serif;
   font-weight: 100;
@@ -197,11 +202,11 @@ body .menu button {
   margin: 0 auto;
   cursor: pointer;
 }
-/* line 112, ../sass/screen.scss */
+/* line 116, ../sass/screen.scss */
 body .menu button:hover {
   background: rgba(255, 255, 255, 0.5);
 }
-/* line 115, ../sass/screen.scss */
+/* line 119, ../sass/screen.scss */
 body .menu button:active {
   background: rgba(255, 255, 255, 0.75);
 }

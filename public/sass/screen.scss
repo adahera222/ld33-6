@@ -87,10 +87,14 @@ body {
 				}
 			}
 		}
-		h3 {
+		#help {
 			font-size: 1.25em;
 			width: 30em;
 			margin: 0 auto 2em;
+			font-weight: 100;
+			b {
+				font-weight: 700;
+			}
 		}
 		button {
 			font-family: 'Alegreya Sans', sans-serif;
