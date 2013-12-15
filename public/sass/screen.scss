@@ -38,6 +38,20 @@ body {
 		#score {
 			margin: 1em;
 			font-size: 1.5em;
+			pointer-events: none;
+		}
+		#touch-detonate {
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 2em;
+			width: 2em;
+			background: red;
+			text-align: center;
+			line-height: 2em;
+			font-size: 2em;
+			color: white;
+			font-weight: 900;
 		}
 	}
 
@@ -92,6 +106,7 @@ body {
 			width: 30em;
 			margin: 0 auto 2em;
 			font-weight: 100;
+			text-align: center;
 			b {
 				font-weight: 700;
 			}

@@ -7,6 +7,7 @@ class View
 		@c = new Canvas()
 		@ui = document.getElementById 'ui'
 		@score = document.getElementById 'score'
+		@touchDetonator = document.getElementById 'touch-detonate'
 		@mainMenu = document.getElementById 'main-menu'
 		@deadMenu = document.getElementById 'dead-menu'
 		@deadScore = document.getElementById 'dead-score'
@@ -19,9 +20,12 @@ class View
 		window.addEventListener('resize', @resize)
 		window.addEventListener('mousemove', @mousemove)
 		window.addEventListener('keydown', @keydown)
-		window.addEventListener('touchstart', @touchstart)
-		window.addEventListener('touchmove', @touchmove)
-		window.addEventListener('touchend', @touchend)
+		if window.ontouchstart isnt undefined
+			window.addEventListener('touchstart', @touchstart)
+			window.addEventListener('touchmove', @touchmove)
+			window.addEventListener('touchend', @touchend)
+			@touchDetonator.classList.toggle('hidden', false)
+			@touchDetonator.addEventListener('touchstart', @game.detonatePressed)
 		@resize()
 	passthruBlur: (element, cb) =>
 		return (e) =>
