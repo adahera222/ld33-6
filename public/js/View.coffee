@@ -104,7 +104,7 @@ class View
 					@c.drawCircle @game.p.x, @game.p.y, @game.p.detonationSize(), detFill, detStroke
 			else
 				# player
-				@c.drawCircle @game.p.x, @game.p.y, @game.p.size, 'rgba(0,0,0,1)'
+				@drawMover @game.p, 'rgba(0,0,0,1)'
 				# target
 				@c.drawCircle @game.p.target.x, @game.p.target.y, 5, 'rgba(0,0,0,0.5)'
 				@c.drawLine @game.p.x, @game.p.y, @game.p.target.x, @game.p.target.y, 2, 'rgba(0,0,0,0.1)'
@@ -119,7 +119,13 @@ class View
 						@c.drawCircle e.x, e.y, e.detonationSize(), detFill, detStroke
 						@c.drawText 'x' + e.multiplier(), e.x, e.y - 20 + (ratio * 20), @getShade ratio * 2
 				else
-					@c.drawCircle e.x, e.y, e.size, '#F00'
+					@drawMover e, '#F00'
+	drawMover: (m, color = 'rgba(0,0,0,1)') =>
+		@c.drawCircle m.x, m.y, m.size, color
+		curveHeight = ((m.y % (m.size * 4)) / 2) - m.size
+		@c.drawMyCurveH(m.x - m.size, m.y, m.x + m.size, m.y, curveHeight)
+		curveWidth = ((m.x % (m.size * 4)) / 2) - m.size
+		@c.drawMyCurveV(m.x, m.y - m.size, m.x, m.y + m.size, curveWidth)
 	getShade: (opacity) =>
 		'rgba(0,0,0,' + opacity + ')'
 
