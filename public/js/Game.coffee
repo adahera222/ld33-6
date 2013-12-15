@@ -34,6 +34,11 @@ class Game
 		if @state is STATES.PLAY
 			@sound.play('detonate')
 			@p.detonate()
+	shouldSpawnEnemies: () =>
+		if @state is STATES.PLAY and not @p.detonated
+			totalElapsed = @lastTime - @lastStart
+			return @enemiesSpawned < Math.pow(totalElapsed / 2000, 1.1)
+		return false
 	tick: (time) =>
 		if !@lastStart
 			@lastStart = time
@@ -43,7 +48,7 @@ class Game
 			elapsed = time - @lastTime
 			# elapsed = Math.max(elapsed, 1000) # protect against long delays
 			@lastTime = time
-			while (not @p.detonated) and @enemiesSpawned < (time - @lastStart) / 2000
+			while @shouldSpawnEnemies()
 				@spawnEnemy()
 			@p.tick elapsed
 			@enemies.forEach (e, index) => 
@@ -69,6 +74,7 @@ class Game
 						else
 							@enemies = _.without @enemies, otherE
 							e.targetSize = Math.sqrt(Math.pow(e.size, 2) + Math.pow(otherE.size, 2))
+							e.maxSpeed = Math.max(e.maxSpeed, otherE.maxSpeed)
 							@sound.play('blip')
 			@v.render()
 		raf @tick
