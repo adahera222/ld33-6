@@ -51,10 +51,12 @@ class Game
 				xdiff = @p.x - e.x
 				ydiff = @p.y - e.y
 				if (@collisionCheck(@p, e))
-					@sound.play('small-explosion')
 					if @p.detonated # hit player's detonation
-						e.detonate()
+						unless e.detonated 
+							@sound.play('small-explosion')
+							e.detonate()
 					else # hit player
+						@sound.play('small-explosion')
 						@endGame()
 				@enemies[index + 1..].forEach (otherE) =>
 					if (@collisionCheck otherE, e) # hit other enemy; combine
