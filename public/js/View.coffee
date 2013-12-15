@@ -117,7 +117,7 @@ class View
 						detStroke = @getShade ratio / 2
 						detFill = @getShade ratio / 4
 						@c.drawCircle e.x, e.y, e.detonationSize(), detFill, detStroke
-						@c.drawText 'x' + e.multiplier(), e.x, e.y, @getShade ratio * 2
+						@c.drawText 'x' + e.multiplier(), e.x, e.y - 20 + (ratio * 20), @getShade ratio * 2
 				else
 					@c.drawCircle e.x, e.y, e.size, '#F00'
 	getShade: (opacity) =>
