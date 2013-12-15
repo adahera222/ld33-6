@@ -23,5 +23,10 @@ class Canvas
 		@ctx.fill()
 		@ctx.strokeStyle = stroke
 		@ctx.stroke()
+	drawText: (string, x, y, color = '#F00') =>
+		@ctx.font = '1em \'Alegreya Sans\''
+		@ctx.textAlign = 'center'
+		@ctx.fillStyle = color
+		@ctx.fillText(string, x, y)
 
 module.exports = Canvas

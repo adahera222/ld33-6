@@ -99,8 +99,8 @@ class View
 				ratio = @game.p.detonated / @game.p.detonationTime
 				if ratio < 1
 					ratio = 1 - ratio
-					detStroke = 'rgba(0,0,0,' + ratio/2 + ')'
-					detFill = 'rgba(0,0,0,' + (ratio / 4) + ')'
+					detStroke = @getShade ratio / 2
+					detFill = @getShade ratio / 4
 					@c.drawCircle @game.p.x, @game.p.y, @game.p.detonationSize(), detFill, detStroke
 			else
 				# player
@@ -114,10 +114,13 @@ class View
 					ratio = e.detonated / e.detonationTime
 					if ratio < 1
 						ratio = 1 - ratio
-						detStroke = 'rgba(0,0,0,' + (ratio / 2) + ')'
-						detFill = 'rgba(0,0,0,' + (ratio / 4) + ')'
+						detStroke = @getShade ratio / 2
+						detFill = @getShade ratio / 4
 						@c.drawCircle e.x, e.y, e.detonationSize(), detFill, detStroke
+						@c.drawText 'x' + e.multiplier(), e.x, e.y, @getShade ratio * 2
 				else
 					@c.drawCircle e.x, e.y, e.size, '#F00'
+	getShade: (opacity) =>
+		'rgba(0,0,0,' + opacity + ')'
 
 module.exports = View

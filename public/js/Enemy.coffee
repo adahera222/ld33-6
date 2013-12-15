@@ -16,6 +16,6 @@ class Enemy extends Detonator
 			@velocity.y = @target.y - @y
 		super(elapsed, false)
 	multiplier: =>
-		return Math.max(1, Math.round(@area()) / (Math.PI * 12))
+		return Math.max(1, Math.round(@area() / (Math.PI * 12)))
 
 module.exports = Enemy
