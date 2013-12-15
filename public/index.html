@@ -11,13 +11,16 @@
 		<section id="main-menu" class="menu">
 			<h1>One<b>Shot</b></h1>
 			<h2>by <a href="http://zevyoura.com/">Zev Youra</a></h2>
+			<h3 id="help"><b>Move</b> with the mouse to avoid enemies. Enemies will merge when you make them run into each other. <b>Survive</b> as long as you can, then use your <b>one shot</b> (space bar) before dying to score more points. Each enemy you detonate gives your score a <b>multiplier</b>. Bigger enemies give you a bigger multiplier.</h3>
 			<button type="button" id="play-button">Play</button>
 		</section>
 		<section id="dead-menu" class="menu hidden fade-out">
 			<h1>Game <b>Over</b></h1>
-			<h2 id="score"></h2>
-			<h2 id="fail">Use your <b>one shot</b> (space bar) before dying to score points.</h2>
+			<h2 id="dead-score"></h2>
 			<button type="button" id="play-again-button">Play Again</button>
+		</section>
+		<section id="ui" class="hidden fade-out">
+			<section id="score">0</section>
 		</section>
 		<script src="bundle.js"></script>
 	</body>

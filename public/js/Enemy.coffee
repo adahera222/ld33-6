@@ -15,5 +15,7 @@ class Enemy extends Detonator
 			@velocity.x = @target.x - @x
 			@velocity.y = @target.y - @y
 		super(elapsed, false)
+	multiplier: =>
+		return Math.round @area()
 
 module.exports = Enemy

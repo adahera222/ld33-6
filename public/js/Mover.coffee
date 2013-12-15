@@ -20,5 +20,7 @@ class Mover
 		@size += elapsed * sDiff / 60
 	toString: =>
 		return @x + ", " + @y
+	area: =>
+		return Math.PI * Math.pow(@size, 2)
 
 module.exports = Mover

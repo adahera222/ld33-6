@@ -4,8 +4,12 @@ STATES = require './STATES'
 class View
 	constructor: (@game) ->
 		@c = new Canvas()
+		@ui = document.getElementById 'ui'
+		@score = document.getElementById 'score'
 		@mainMenu = document.getElementById 'main-menu'
 		@deadMenu = document.getElementById 'dead-menu'
+		@deadScore = document.getElementById 'dead-score'
+		@helpText = document.getElementById 'help'
 		@loading = document.getElementById 'loading'
 		@playButton = document.getElementById 'play-button'
 		@playButton.addEventListener 'click', @passthruBlur(@playButton, @game.playClicked)
@@ -25,10 +29,20 @@ class View
 		@showElement @mainMenu
 	hideMenu: =>
 		@hideElement @mainMenu
-	showDead: =>
+	showDead: () =>
 		@showElement @deadMenu
+		score = Math.round @game.score
+		@deadScore.textContent = score + ' point'
+		if score isnt 1 then @deadScore.textContent += 's'
+		@showElement @score
 	hideDead: =>
 		@hideElement @deadMenu
+	showUI: =>
+		@showElement @ui
+	hideUI: =>
+		@hideElement @ui
+	showScore: =>
+		@showElement @score
 	showElement: (e) =>
 		e.classList.toggle('hidden', false)
 		e.classList.toggle('fade-out', false)
@@ -47,6 +61,7 @@ class View
 			@game.detonatePressed()
 	render: () =>
 		@c.clear()
+		@score.textContent = Math.round(@game.score)
 		if @game.state is STATES.PLAY
 			if @game.p.detonated
 				ratio = @game.p.detonated / @game.p.detonationTime
@@ -64,6 +79,7 @@ class View
 			# enemies
 			@game.enemies.forEach (e) =>
 				if e.detonated
+					ratio = e.detonated / e.detonationTime
 					detStroke = 'rgba(0,0,0,' + (1 - ratio) + ')'
 					detFill = 'rgba(0,0,0,' + ((1 - ratio) / 4) + ')'
 					@c.drawCircle e.x, e.y, e.detonationSize(), detFill, detStroke

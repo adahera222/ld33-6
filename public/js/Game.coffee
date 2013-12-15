@@ -17,6 +17,9 @@ class Game
 	enemies: null
 	v: null
 	lastMouse: x: 0, y: 0
+	score: 0
+	lastDetonation: 0
+	detonationEndGameDelay: 5000 # end game 10 seconds after last explosion
 	constructor: ->
 		@state = STATES.LOADING
 		@v = new View(@)
@@ -34,6 +37,7 @@ class Game
 		if @state is STATES.PLAY
 			@sound.play('detonate')
 			@p.detonate()
+			@lastDetonation = @lastTime
 	shouldSpawnEnemies: () =>
 		if @state is STATES.PLAY and not @p.detonated
 			totalElapsed = @lastTime - @lastStart
@@ -48,6 +52,11 @@ class Game
 			elapsed = time - @lastTime
 			# elapsed = Math.max(elapsed, 1000) # protect against long delays
 			@lastTime = time
+			if @p.detonated
+				if @lastTime - @lastDetonation > @detonationEndGameDelay
+					@endGame() # all detonations over 
+			else
+				@score = (time - @lastStart) / 1000
 			while @shouldSpawnEnemies()
 				@spawnEnemy()
 			@p.tick elapsed
@@ -58,19 +67,16 @@ class Game
 				if (@collisionCheck(@p, e))
 					if @p.detonated # hit player's detonation
 						unless e.detonated 
-							@sound.play('small-explosion')
-							e.detonate()
+							@detonateEnemy e
 					else # hit player
 						@sound.play('small-explosion')
 						@endGame()
 				@enemies[index + 1..].forEach (otherE) =>
 					if (@collisionCheck otherE, e) # hit other enemy; combine
 						if otherE.detonated and not e.detonated
-							@sound.play('small-explosion')
-							e.detonate()
+							@detonateEnemy e
 						else if e.detonated and not otherE.detonated
-							@sound.play('small-explosion')
-							otherE.detonate()
+							@detonateEnemy otherE
 						else
 							@enemies = _.without @enemies, otherE
 							e.targetSize = Math.sqrt(Math.pow(e.size, 2) + Math.pow(otherE.size, 2))
@@ -78,6 +84,11 @@ class Game
 							@sound.play('blip')
 			@v.render()
 		raf @tick
+	detonateEnemy: (e) =>
+		@sound.play('small-explosion')
+		e.detonate()
+		@score *= e.multiplier()
+		@lastDetonation = @lastTime
 	spawnEnemy: =>
 		x = 0
 		y = 0
@@ -116,10 +127,13 @@ class Game
 		@lastTime = null
 		@lastStart = null
 		@enemiesSpawned = 0
+		@score = 0
+		@lastDetonation = 0
 		raf @tick
+		@v.showUI()
 	endGame: =>
 		@state = STATES.DEAD
-		@v.showDead()
+		@v.showDead(@score)
 	resize: (@width, @height) =>
 
 module.exports = Game
