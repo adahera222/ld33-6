@@ -1,6 +1,6 @@
-Mover = require './Mover'
+Detonator = require './Detonator'
 
-class Player extends Mover
+class Player extends Detonator
 	target: {x: 0, y: 0}
 	tick: (elapsed) =>
 		super(elapsed)

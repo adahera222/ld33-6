@@ -16,10 +16,12 @@ class Canvas
 		@ctx.lineWidth = width
 		@ctx.strokeStyle = color
 		@ctx.stroke()
-	drawCircle: (x, y, radius, color = '#F00') =>
+	drawCircle: (x, y, radius, color = '#F00', stroke = 'none') =>
 		@ctx.beginPath()
 		@ctx.arc(x, y, radius, 0, Math.PI * 2)
 		@ctx.fillStyle = color
 		@ctx.fill()
+		@ctx.strokeStyle = stroke
+		@ctx.stroke()
 
 module.exports = Canvas

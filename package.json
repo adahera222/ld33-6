@@ -12,6 +12,7 @@
 	},
 	"scripts": {
 		"start": "beefy /js/main.coffee:bundle.js --cwd public 8080 -- -d -t coffeeify --extension=\".coffee\"",
+		"build": "browserify public/js/main.coffee -d -t coffeeify --extension=\".coffee\" -o public/bundle.js",
 		"compass": "compass compile public",
 		"cwatch": "compass watch public"
 	}

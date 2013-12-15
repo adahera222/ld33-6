@@ -3,15 +3,20 @@
 	<head>
 		<title>One Shot (LD28) by Zev Youra</title>
 		<link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:100,900' rel='stylesheet' type='text/css'>
-		<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+		<link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 		<meta charset="utf-8" />
 	</head>
 	<body>
 		<section id="loading">Loading...</section>
-		<section id="menu">
+		<section id="main-menu" class="menu">
 			<h1>One<b>Shot</b></h1>
 			<h2>by <a href="http://zevyoura.com/">Zev Youra</a></h2>
 			<button id="play-button">Play</button>
+		</section>
+		<section id="dead-menu" class="menu hidden">
+			<h1>Game <b>Over</b></h1>
+			<h2 id="score"> </h2>
+			<button id="play-again-button">Play Again</button>
 		</section>
 		<script src="bundle.js"></script>
 	</body>

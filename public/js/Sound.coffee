@@ -1,12 +1,14 @@
-Jsfxr = require './jsfxr'
+sjs = require './soundjs.min'
 
 class Sound
 	constructor: ->
-		@s1 = jsfxr([2,0,0.0225,0.0155,0.29,0.37,0.11,-0.0007,0.6833,0.15,0.63,0.0248,0.67,0,-0.0505,0.19,-0.04,-0.3199,0.82,-0.82,0.09,0.01,-0.071,0.5])
-		@player = new Audio()
-		@player.src = @s1
-	blip: =>
-		console.log 'blip'
-		@player.play()
+		createjs.Sound.addEventListener("fileload", createjs.proxy(@fileload, @))
+		['blip', 'blip2', 'detonate', 'small-explosion'].forEach (sound) =>
+			createjs.Sound.registerSound("sounds/" + sound + ".wav", sound);
+	fileload: (e) =>
+		console.log "loaded " + e.src
+	play: (soundname = 'blip') =>
+		instance = createjs.Sound.play(soundname)
+		instance.volume = 0.5;
 
 module.exports = Sound

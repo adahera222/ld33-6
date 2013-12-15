@@ -45,7 +45,7 @@ body {
 		@include fullscreen;
 	}
 
-	#menu {
+	.menu {
 		cursor: default;
 		z-index: 100;
 		background: hsla(0,100,50,1);
