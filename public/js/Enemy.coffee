@@ -4,7 +4,7 @@ class Enemy extends Detonator
 	maxSpeed: 0.1
 	size: 5
 	constructor: (x, y) ->
-		@maxSpeed = 0.05 + Math.random() * 0.1
+		@maxSpeed = 0.05 + Math.random() * 0.2
 		super(x,y)
 	detonationSize: () =>
 		ds = super()
