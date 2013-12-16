@@ -2,7 +2,7 @@ Mover = require './Mover'
 
 class Detonator extends Mover
 	detonated: false
-	detonationTime: 1800
+	detonationTime: 1600
 	detonate: =>
 		unless @detonated then @detonated = 1
 	tick: (elapsed) =>
