@@ -190,7 +190,7 @@ body .menu h2 a:hover {
   text-decoration: underline;
 }
 /* line 104, ../sass/screen.scss */
-body .menu #help {
+body .menu section {
   font-size: 1.25em;
   width: 30em;
   margin: 0 auto 2em;
@@ -198,17 +198,17 @@ body .menu #help {
   text-align: center;
 }
 /* line 110, ../sass/screen.scss */
-body .menu #help b {
+body .menu section b {
   font-weight: 700;
 }
 /* line 113, ../sass/screen.scss */
-body .menu #help a {
+body .menu section a {
   font-weight: 700;
   color: white;
   text-decoration: none;
 }
 /* line 117, ../sass/screen.scss */
-body .menu #help a:hover {
+body .menu section a:hover {
   text-decoration: underline;
 }
 /* line 122, ../sass/screen.scss */
