@@ -1,3 +1,3 @@
-Game = require('./Game.coffee')
+Game = require './Game'
 
 g = new Game()
