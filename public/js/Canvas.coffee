@@ -1,4 +1,5 @@
 class Canvas
+	controlFactor: 4 * (Math.sqrt(2) - 1) / 3 
 	constructor: ->
 		@elt = document.createElement('canvas')
 		document.getElementsByTagName('body')[0].appendChild(@elt)
@@ -40,9 +41,9 @@ class Canvas
 		@ctx.moveTo(startX, startY)
 		midX = (startX + endX) / 2
 		midY = ((startY + endY) / 2) + height
-		controlHeight = height * 4 * (Math.sqrt(2) - 1) / 3 
-		@ctx.bezierCurveTo(startX, startY + controlHeight, midX - controlHeight, midY, midX, midY)
-		@ctx.bezierCurveTo(midX + controlHeight, midY, endX, endY + controlHeight, endX, endY)
+		controlHeight = height * @controlFactor
+		@ctx.bezierCurveTo(startX, startY + controlHeight, midX - Math.abs(controlHeight), midY, midX, midY)
+		@ctx.bezierCurveTo(midX + Math.abs(controlHeight), midY, endX, endY + controlHeight, endX, endY)
 		@ctx.strokeStyle = color
 		@ctx.lineWidth = width
 		@ctx.stroke()
@@ -51,9 +52,9 @@ class Canvas
 		@ctx.moveTo(startX, startY)
 		midX = ((startX + endX) / 2) + height
 		midY = (startY + endY) / 2
-		controlHeight = height * 4 * (Math.sqrt(2) - 1) / 3 
-		@ctx.bezierCurveTo(startX + controlHeight, startY, midX, midY - controlHeight, midX, midY)
-		@ctx.bezierCurveTo(midX, midY + controlHeight, endX  + controlHeight, endY, endX, endY)
+		controlHeight = height * @controlFactor
+		@ctx.bezierCurveTo(startX + controlHeight, startY, midX, midY - Math.abs(controlHeight), midX, midY)
+		@ctx.bezierCurveTo(midX, midY + Math.abs(controlHeight), endX  + controlHeight, endY, endX, endY)
 		@ctx.strokeStyle = color
 		@ctx.lineWidth = width
 		@ctx.stroke()
