@@ -193,25 +193,26 @@ body .menu h2 a:hover {
 body .menu section {
   font-size: 1.25em;
   width: 30em;
+  max-width: 95%;
   margin: 0 auto 2em;
   font-weight: 100;
   text-align: center;
 }
-/* line 110, ../sass/screen.scss */
+/* line 111, ../sass/screen.scss */
 body .menu section b {
   font-weight: 700;
 }
-/* line 113, ../sass/screen.scss */
+/* line 114, ../sass/screen.scss */
 body .menu section a {
   font-weight: 700;
   color: white;
   text-decoration: none;
 }
-/* line 117, ../sass/screen.scss */
+/* line 118, ../sass/screen.scss */
 body .menu section a:hover {
   text-decoration: underline;
 }
-/* line 122, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
 body .menu button {
   font-family: "Alegreya Sans", sans-serif;
   font-weight: 100;
@@ -228,11 +229,11 @@ body .menu button {
   margin: 0 auto;
   cursor: pointer;
 }
-/* line 139, ../sass/screen.scss */
+/* line 140, ../sass/screen.scss */
 body .menu button:hover {
   background: rgba(255, 255, 255, 0.5);
 }
-/* line 142, ../sass/screen.scss */
+/* line 143, ../sass/screen.scss */
 body .menu button:active {
   background: rgba(255, 255, 255, 0.75);
 }
