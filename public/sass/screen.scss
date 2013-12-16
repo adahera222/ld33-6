@@ -110,6 +110,14 @@ body {
 			b {
 				font-weight: 700;
 			}
+			a {
+				font-weight: 700;
+				color: white;
+				text-decoration: none;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
 		}
 		button {
 			font-family: 'Alegreya Sans', sans-serif;

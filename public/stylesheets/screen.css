@@ -201,7 +201,17 @@ body .menu #help {
 body .menu #help b {
   font-weight: 700;
 }
-/* line 114, ../sass/screen.scss */
+/* line 113, ../sass/screen.scss */
+body .menu #help a {
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+}
+/* line 117, ../sass/screen.scss */
+body .menu #help a:hover {
+  text-decoration: underline;
+}
+/* line 122, ../sass/screen.scss */
 body .menu button {
   font-family: "Alegreya Sans", sans-serif;
   font-weight: 100;
@@ -218,11 +228,11 @@ body .menu button {
   margin: 0 auto;
   cursor: pointer;
 }
-/* line 131, ../sass/screen.scss */
+/* line 139, ../sass/screen.scss */
 body .menu button:hover {
   background: rgba(255, 255, 255, 0.5);
 }
-/* line 134, ../sass/screen.scss */
+/* line 142, ../sass/screen.scss */
 body .menu button:active {
   background: rgba(255, 255, 255, 0.75);
 }
