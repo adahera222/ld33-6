@@ -77,7 +77,7 @@ class Game
 							@detonateEnemy e
 						else if e.detonated and not otherE.detonated
 							@detonateEnemy otherE
-						else
+						else if not (e.detonated and otherE.detonated)
 							@enemies = _.without @enemies, otherE
 							e.targetSize = Math.sqrt(Math.pow(e.size, 2) + Math.pow(otherE.size, 2))
 							e.maxSpeed = Math.max(e.maxSpeed, otherE.maxSpeed)
@@ -85,6 +85,7 @@ class Game
 			@v.render()
 		raf @tick
 	detonateEnemy: (e) =>
+		console.log 'e det'
 		@sound.play('small-explosion')
 		e.detonate()
 		@score *= e.multiplier()

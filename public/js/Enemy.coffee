@@ -8,7 +8,6 @@ class Enemy extends Detonator
 		super(x,y)
 	detonationSize: () =>
 		ds = super()
-		console.log('ds: ' + ds)
 		return ds
 	tick: (elapsed) =>
 		if @target

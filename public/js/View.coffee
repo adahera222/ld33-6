@@ -27,6 +27,14 @@ class View
 			@touchDetonator.classList.toggle('hidden', false)
 			@touchDetonator.addEventListener('touchstart', @game.detonatePressed)
 		@resize()
+		@browserCheck()
+	browserCheck: =>
+		if navigator.userAgent.toLowerCase().indexOf('chrome') is -1
+			@bc = document.getElementById('browser-check')
+			@bc.classList.toggle('hidden', false)
+			document.getElementById('bypass-browser-check').addEventListener('click', () =>
+				@bc.classList.toggle('fade-out', true)
+			)
 	passthruBlur: (element, cb) =>
 		return (e) =>
 			element.blur()

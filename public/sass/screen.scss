@@ -121,7 +121,7 @@ body {
 			$borderHeight: 0.075em;
 			border: $borderHeight solid white;
 			display: block;
-			width: 5em;
+			width: 10em;
 			$height: 2em + (2 * $borderHeight);
 			border-radius: $height / 4;
 			height: $height;

@@ -12,7 +12,7 @@
 		<section id="main-menu" class="menu">
 			<h1>One<b>Shot</b></h1>
 			<h2>by <a href="http://zevyoura.com/">Zev Youra</a></h2>
-			<section id="help"><b>Move</b> with the mouse or touch to avoid enemies. Enemies will merge when they run into each other. <b>Survive</b> as long as you can, then use your <b>one shot</b> (space bar, or "!" button on touch devices) before dying to score more points. Each enemy you detonate gives your score a <b>multiplier</b>. Bigger enemies give you a bigger multiplier.</section>
+			<section id="help"><b>Move</b> with the mouse or touch; try to avoid the enemies. Enemies will merge when they run into each other. <b>Survive</b> as long as you can, then use your <b>one shot</b> (space bar, or "!" button on touch devices) before dying to score more points. Each enemy you detonate gives your score a <b>multiplier</b>. Bigger enemies give you a bigger multiplier.</section>
 			<button type="button" id="play-button">Play</button>
 		</section>
 		<section id="dead-menu" class="menu hidden fade-out">
@@ -23,6 +23,11 @@
 		<section id="ui" class="hidden fade-out">
 			<section id="score">0</section>
 			<section id="touch-detonate" class="hidden">!</section>
+		</section>
+		<section id="browser-check" class="hidden menu">
+			<h1>Please use Chrome</h1>
+			<h2>This is an experimental game created for Ludum Dare, and has only been tested in Chrome. It is not known to work in any other browser.</h2>
+			<button id="bypass-browser-check">Let me try anyways</button>
 		</section>
 		<script src="bundle.js"></script>
 	</body>
