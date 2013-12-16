@@ -70,6 +70,10 @@ body {
 		@include fullscreen;
 	}
 
+	#dead-score {
+		margin: 1em 0;
+	}
+
 	.menu {
 		cursor: default;
 		z-index: 100;

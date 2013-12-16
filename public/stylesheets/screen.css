@@ -142,6 +142,10 @@ body canvas {
   left: 0;
 }
 /* line 73, ../sass/screen.scss */
+body #dead-score {
+  margin: 1em 0;
+}
+/* line 77, ../sass/screen.scss */
 body .menu {
   cursor: default;
   z-index: 100;
@@ -157,7 +161,7 @@ body .menu {
   -o-transition: all, 1s;
   transition: all, 1s;
 }
-/* line 80, ../sass/screen.scss */
+/* line 84, ../sass/screen.scss */
 body .menu h1, body .menu h2, body .menu h3 {
   text-align: center;
   font-weight: 100;
@@ -166,30 +170,30 @@ body .menu h1, body .menu h2, body .menu h3 {
   -moz-user-select: none;
   user-select: none;
 }
-/* line 85, ../sass/screen.scss */
+/* line 89, ../sass/screen.scss */
 body .menu h1 b, body .menu h2 b, body .menu h3 b {
   font-weight: 900;
 }
-/* line 89, ../sass/screen.scss */
+/* line 93, ../sass/screen.scss */
 body .menu h1 {
   font-size: 3em;
   margin: 1em 0 0.25em;
 }
-/* line 93, ../sass/screen.scss */
+/* line 97, ../sass/screen.scss */
 body .menu h2 {
   font-size: 1.5em;
   margin: 0.25em 0 1em;
 }
-/* line 96, ../sass/screen.scss */
+/* line 100, ../sass/screen.scss */
 body .menu h2 a {
   color: white;
   text-decoration: none;
 }
-/* line 99, ../sass/screen.scss */
+/* line 103, ../sass/screen.scss */
 body .menu h2 a:hover {
   text-decoration: underline;
 }
-/* line 104, ../sass/screen.scss */
+/* line 108, ../sass/screen.scss */
 body .menu section {
   font-size: 1.25em;
   width: 30em;
@@ -198,21 +202,21 @@ body .menu section {
   font-weight: 100;
   text-align: center;
 }
-/* line 111, ../sass/screen.scss */
+/* line 115, ../sass/screen.scss */
 body .menu section b {
   font-weight: 700;
 }
-/* line 114, ../sass/screen.scss */
+/* line 118, ../sass/screen.scss */
 body .menu section a {
   font-weight: 700;
   color: white;
   text-decoration: none;
 }
-/* line 118, ../sass/screen.scss */
+/* line 122, ../sass/screen.scss */
 body .menu section a:hover {
   text-decoration: underline;
 }
-/* line 123, ../sass/screen.scss */
+/* line 127, ../sass/screen.scss */
 body .menu button {
   font-family: "Alegreya Sans", sans-serif;
   font-weight: 100;
@@ -229,11 +233,11 @@ body .menu button {
   margin: 0 auto;
   cursor: pointer;
 }
-/* line 140, ../sass/screen.scss */
+/* line 144, ../sass/screen.scss */
 body .menu button:hover {
   background: rgba(255, 255, 255, 0.5);
 }
-/* line 143, ../sass/screen.scss */
+/* line 147, ../sass/screen.scss */
 body .menu button:active {
   background: rgba(255, 255, 255, 0.75);
 }

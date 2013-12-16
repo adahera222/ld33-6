@@ -48,8 +48,8 @@ class View
 	showDead: () =>
 		@showElement @deadMenu
 		score = Math.round @game.score
-		@deadScore.textContent = score + ' point'
-		if score isnt 1 then @deadScore.textContent += 's'
+		@deadScore.innerHTML = '<b>' + score + '</b> point'
+		if score isnt 1 then @deadScore.innerHTML += 's'
 		@showElement @score
 	hideDead: =>
 		@hideElement @deadMenu
